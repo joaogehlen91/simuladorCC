@@ -1,5 +1,7 @@
 from estrutura import *
 
+entrada = [6, 24, 26, 35]
+
 e1 = Componente('E1', None, None, None, None)
 c1 = Componente('C1', 0, [], None, None)
 serv1 = Servidor(1, 4, 8)
