@@ -18,20 +18,20 @@ c1.entrada = e	 #E<-C1
 s.entrada  = c1  #C1->S
 c1.saida   = s   #C1<-S
 
-# Fim da parte da configuracao ou inicio de outra coisa 
+# Fim da parte da configuracao
 
 servidor = c1.list_serv[0]
 
+soma = 0
+ent = []
+
 for i in entrada:
-	joao     = i + servidor.atividade()
-	
-	if i < joao:
-		i = joao
-		
-	servidor.ult_saida = i
-	print(servidor.ult_saida)
+  if i > soma:
+      soma = i + servidor.atividade()
+  else:
+      i = soma + servidor.atividade()
 
+  ent.append(i)
 
-
-
+print(ent)
 
