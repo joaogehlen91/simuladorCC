@@ -18,8 +18,7 @@ class Servidor:
     self.ociosidade = ociosidade
   
   def atividade(self):
-    return randint(1, 100)
-    #return randint(self.ini, self.fim)
+    return randint(self.ini, self.fim)
 		
 		
 
