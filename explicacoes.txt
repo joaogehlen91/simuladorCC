@@ -1,0 +1,48 @@
+ler arquivo
+cria objetos
+
+lista_de_objetos = [c1, c2, r1, s1]
+lista_de_entidades = [2,3,4,5,6,7,8,9,11,12,13,14,15,16,30,32]
+e1->c1
+
+
+c1{
+	fila = [1]
+
+
+}
+
+while{
+
+	relogio = 1
+	
+	for orig, dest in lista_de_compomentes:
+
+	    move_entrada_para_fila_do_compomente(orig, dest+1, elem)
+
+
+	
+
+
+
+
+
+
+}
+
+
+
+
+
+#
+
+Cada componente terá que ter uma fila de entrada e outra de saida, mais um ponteiro para o proximo componente.
+
+Todas as entidades temporarias são carregadas incialmente na entrada, e ao ser "processada" esta sai da fila de entrada.
+
+A fila de entrada deve ser atualizada a cada incremento do relogio global.
+
+A entidade temporaria só deve "andar" no seu devido tempo.
+
+
+
