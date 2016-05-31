@@ -5,30 +5,31 @@ def abrir_arquivo(nome_arq):
 
 
 def ler_arquivo():
-    arq  = abrir_arquivo("exemplo_4.in")   
-    conf = []
+    arq  		= abrir_arquivo("exemplo_4.in")   
+    conf 		= []
 
     for i in arq:
         if '*' in i: break
 
         a = i.split(';')[:-1]
-        if a != []: conf.append(a)
+        if a != []: 
+        	b = a[0].split(':')
 
-    for i in conf:
-        print(i)
+        	#print("A -> " + str(a))
+        	#print("B -> " + str(b))
+        	
+        	try:
+        		#print("C -> " + str(b[1].split(',')))
+        		conf.append((b[0], b[1].split(',')))
+        	except:
+        		pass
+        	
 
-    #while 'E' not in rea :
-    #   rea = arq.read()
-    #   print(rea)
+    for i,j in conf:
+    	for k in j:
+    		print(k)
+    	print('\n')
 
-
-#open("exemplo_1.in", "r")
-
-#texto = arq.read()
-
-#lista = texto.replace("\n", "").split(";")
-
-#print (lista)
 
 if __name__ == "__main__":
     ler_arquivo()
