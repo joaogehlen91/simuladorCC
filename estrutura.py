@@ -10,12 +10,13 @@ class Componente:
 
 
 class Servidor:
-  def __init__(self, id_serv, ini, fim, ociosidade = 0, ult_saida = 0):
-    self.id_serv    = id_serv
-    self.ini        = ini
-    self.fim        = fim
-    self.ult_saida  = ult_saida
-    self.ociosidade = ociosidade
+  def __init__(self, id_serv, ini, fim, ociosidade = 0, ult_saida = 0, atendimento = False):
+    self.id_serv     = id_serv
+    self.ini         = ini
+    self.fim         = fim
+    self.atendimento = atendimento
+    self.ult_saida   = ult_saida
+    self.ociosidade  = ociosidade
   
   def atividade(self):
     return randint(self.ini, self.fim)
