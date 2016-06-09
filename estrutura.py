@@ -3,9 +3,9 @@ from random import randint
 class Componente:
   def __init__(self, nome, qtd_serv, list_serv, saida, entrada):
     self.nome       = nome
-    self.qtd_serv = qtd_serv
+    self.qtd_serv   = qtd_serv
     self.list_serv  = list_serv
-    self.saida 	    = saida
+    self.saida 	  = saida
     self.entrada    = entrada
 
 
