@@ -1,4 +1,3 @@
-from estrutura  import *
 from definicoes import *
 
 def abrir_arquivo(nome_arq):
@@ -6,12 +5,8 @@ def abrir_arquivo(nome_arq):
 
 # --------------------------------------------------
 ####################################################
-#   Controle dos Componentes C - Inicio            #
+#   Controle dos Componentes C -                   #
 ####################################################
-
-def criar_componente(nome):
-   c = Componente(nome, 0, [], None, None)
-   return c
 
 # Servidores dos Componentes 'C'
 def criar_servidores(info):
@@ -20,8 +15,10 @@ def criar_servidores(info):
       i    = i.strip(' ')
       valr = i[2:-1].split('-')
       nome = i[0]
-      
-      l.append(Servidor(nome, int(valr[0]), int(valr[1]), 0, 0))
+
+      serv = criar_objeto(SERVIDOR, [nome, int(valr[0]), int(valr[1]), 0, 0, False])    
+      l.append(serv)
+
    return (l, len(l))
 
 # Funcao para imprimir a lista de componentes, preciso tornar generico
@@ -29,15 +26,25 @@ def imprimeC(lista):
    for i in lista:
       print("\nNome: %s, qtd serv: %d" % (i.nome, i.qtd_serv))
       for j in i.list_serv:
-         print(" --  Id_Serv %s, Inicio %d, Fim %d" % (j.id_serv, j.ini, j.fim))
+         print(" --  nome %s, Inicio %d, Fim %d" % (j.nome, j.ini, j.fim))
 
 # --------------------------------------------------
 ####################################################
-#   Controle dos Componentes Infinito - Inicio     #
+#   Controle dos Componentes Infinito -            #
 ####################################################
 
-def componente_infinito():
+def componente_infinito(saida):
    pass
+
+# --------------------------------------------------
+####################################################
+#   Controle dos Roteadores   R       -            #
+####################################################
+
+def roteadores(info):
+   print(info)
+   pass
+
 
 
 def ler_arquivo():
@@ -59,20 +66,20 @@ def ler_arquivo():
    # Cria componentes 'C'
    for i,j in conf:
       if 'C' in i:
-         componente = criar_componente(i)
-         componente.list_serv, componente.qtd_serv = criar_servidores(j)
-         lista_componentes.append(componente)
-         add_dict_componentes(componente.nome, len(lista_componentes) - 1)
+         #nome, qtd_serv, list_serv, saida, entrada
+         componente = criar_objeto(COMPONENTE, [i, criar_servidores(j)[1], criar_servidores(j)[0], None, None])
+         lista_objetos.append(componente)
+         add_dict_componentes(componente.nome, len(lista_objetos) - 1)
       elif 'I' in i:
-         componente = criar_componente(i)
-         componente_infinito()
-         lista_componentes.append(componente)
-         add_dict_componentes(componente.nome, len(lista_componentes) - 1)
-         print(i)
-
+         componente = criar_objeto(COMPONENTE, [i, 0, [], None, None])
+         lista_objetos.append(componente)
+         add_dict_componentes(componente.nome, len(lista_objetos) - 1)
+      elif 'R' in i:
+         print(i, j)
+         componente = criar_objeto(ROTEADOR, [])
 
    # Imprime componentes 'C'
-   imprimeC(lista_componentes) 
+   imprimeC(lista_objetos) 
    
 if __name__ == "__main__":
    ler_arquivo()

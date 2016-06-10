@@ -10,8 +10,8 @@ class Componente:
 
 
 class Servidor:
-  def __init__(self, id_serv, ini, fim, ociosidade = 0, ult_saida = 0, atendimento = False):
-    self.id_serv     = id_serv
+  def __init__(self, nome, ini, fim, ociosidade = 0, ult_saida = 0, atendimento = False):
+    self.nome        = nome
     self.ini         = ini
     self.fim         = fim
     self.atendimento = atendimento
