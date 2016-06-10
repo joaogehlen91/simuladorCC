@@ -41,9 +41,15 @@ def componente_infinito(saida):
 #   Controle dos Roteadores   R       -            #
 ####################################################
 
-def roteadores(info):
-   print(info)
-   pass
+def config_roteadores(info):
+   a = {}
+   for i in info:
+      i    = i.strip(' ')
+      porc = float(i[1 : i.index('-')])
+      cmpo = (i[i.index('-') + 1:-1]).strip(' ')
+
+      a[cmpo] = porc
+   return a
 
 
 
@@ -53,7 +59,8 @@ def ler_arquivo():
    
    # Parte do arquivo
    for i in arq:
-      if '*' in i: break
+      if '*' in i: 
+         break
 
       a = i.split(';')[:-1]
       if a != []: b = a[0].split(':')
@@ -62,24 +69,28 @@ def ler_arquivo():
          conf.append((b[0], b[1].split(',')))
       except:
          pass
-        	
-   # Cria componentes 'C'
-   for i,j in conf:
-      if 'C' in i:
-         #nome, qtd_serv, list_serv, saida, entrada
-         componente = criar_objeto(COMPONENTE, [i, criar_servidores(j)[1], criar_servidores(j)[0], None, None])
-         lista_objetos.append(componente)
-         add_dict_componentes(componente.nome, len(lista_objetos) - 1)
-      elif 'I' in i:
-         componente = criar_objeto(COMPONENTE, [i, 0, [], None, None])
-         lista_objetos.append(componente)
-         add_dict_componentes(componente.nome, len(lista_objetos) - 1)
-      elif 'R' in i:
-         print(i, j)
-         componente = criar_objeto(ROTEADOR, [])
 
-   # Imprime componentes 'C'
-   imprimeC(lista_objetos) 
+   for i,j in conf:
+      objeto = None
+      if 'C' in i:
+         #nome, qtd_serv, list_serv, saida, entrada, COMPONENTE
+         objeto = criar_objeto(COMPONENTE, [i, criar_servidores(j)[1], criar_servidores(j)[0], None, None])
+         imprime_componente(objeto)
+
+      #nome, qtd_serv, list_serv, saida, entrada, INFINITO
+      elif 'I' in i:
+         objeto = criar_objeto(COMPONENTE, [i, 0, [], None, None])
+         imprime_componente(objeto)         
+
+      #nome, list_saidas, ROTEADOR
+      elif 'R' in i:
+         objeto = criar_objeto(ROTEADOR, [i, config_roteadores(j)])
+         imprime_roteador(objeto)
+         
+      #Inserir nas listas de objetos
+      if objeto != None: add_dict_componentes(objeto.nome, len(lista_objetos) - 1, objeto)
+      
+   
    
 if __name__ == "__main__":
    ler_arquivo()

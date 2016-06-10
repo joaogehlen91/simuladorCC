@@ -5,7 +5,7 @@ class Componente:
     self.nome       = nome
     self.qtd_serv   = qtd_serv
     self.list_serv  = list_serv
-    self.saida 	  = saida
+    self.saida 	    = saida
     self.entrada    = entrada
 
 
@@ -22,7 +22,6 @@ class Servidor:
     return randint(self.ini, self.fim)
 		
 		
-
 class Roteador:
   def __init__(self, nome, list_saidas):
     self.nome        = nome

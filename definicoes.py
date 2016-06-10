@@ -32,14 +32,27 @@ def criar_objeto(opcao, param):
    #nome, list_saidas
    if opcao == ROTEADOR:
       c = Roteador(param[0], param[1])
-
    return c
 
-def add_dict_componentes(nome, indice):
+def add_dict_componentes(nome, indice, objeto):
+   lista_objetos.append(objeto)
    dict_componentes[nome] = indice
-   print(dict_componentes)
+   #print(dict_componentes)
 
-# TODO: Verificar se nao existe
+
+def imprime_componente(comp):
+   print("\n --------------- COMPONENTE ---------------")
+   print("   | Nome     -> %s" % (comp.nome))
+   print("   | Qtd_Serv -> %d" % (comp.qtd_serv))
+   print("   | Lst_Serv -> %s" % ([i.nome for i in comp.list_serv]))
+   print("   | Saida    -> %s" % (comp.saida))
+   print("   | Entrada  -> %s" % (comp.entrada))
+
+def imprime_roteador(rot):
+   print("\n --------------- ROTEADOR ---------------")
+   print("   | Nome       -> %s" % (rot.nome))
+   print("   | Lst_Saidas -> %s" % (rot.list_saidas))
+
 def get_componente(nome):
    try:
       a = lista_objetos[dict_componentes[nome]]
