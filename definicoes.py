@@ -22,6 +22,10 @@ def criar_objeto(opcao, param):
    c = None
 
    #nome, qtd_serv, list_serv, saida, entrada
+   if opcao == ENTRADA or opcao == SAIDA:
+      c = Componente(param[0], param[1], param[2], param[3], param[4])
+
+   #nome, qtd_serv, list_serv, saida, entrada
    if opcao == COMPONENTE:
       c = Componente(param[0], param[1], param[2], param[3], param[4])
 
@@ -32,10 +36,13 @@ def criar_objeto(opcao, param):
    #nome, list_saidas
    if opcao == ROTEADOR:
       c = Roteador(param[0], param[1])
+
+
    return c
 
-def add_dict_componentes(nome, indice, objeto):
+def add_objeto(nome, objeto):
    lista_objetos.append(objeto)
+   indice = len(lista_objetos) - 1 if lista_objetos != [] else 0
    dict_componentes[nome] = indice
    #print(dict_componentes)
 
