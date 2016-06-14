@@ -1,12 +1,11 @@
 from random import randint
 
 class Componente:
-  def __init__(self, nome, qtd_serv, list_serv, saida, entrada):
+  def __init__(self, nome, qtd_serv, list_serv, next):
     self.nome       = nome
     self.qtd_serv   = qtd_serv
     self.list_serv  = list_serv
-    self.saida 	    = saida
-    self.entrada    = entrada
+    self.next       = next
 
 
 class Servidor:
@@ -23,6 +22,6 @@ class Servidor:
 		
 		
 class Roteador:
-  def __init__(self, nome, list_saidas):
+  def __init__(self, nome, dict_saidas):
     self.nome        = nome
-    self.list_saidas = list_saidas
+    self.dict_saidas = dict_saidas

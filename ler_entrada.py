@@ -75,12 +75,12 @@ def cria_todos_objetos(conf):
 
       if 'C' in i:
          #nome, qtd_serv, list_serv, saida, entrada, COMPONENTE
-         objeto = criar_objeto(COMPONENTE, [i, criar_servidores(j)[1], criar_servidores(j)[0], None, None])
+         objeto = criar_objeto(COMPONENTE, [i, criar_servidores(j)[1], criar_servidores(j)[0], None])
          #imprime_componente(objeto)
 
       #nome, qtd_serv, list_serv, saida, entrada, INFINITO
       elif 'I' in i:
-         objeto = criar_objeto(COMPONENTE, [i, 0, [], None, None])
+         objeto = criar_objeto(COMPONENTE, [i, 0, [], None])
          #imprime_componente(objeto)         
 
       #nome, list_saidas, ROTEADOR

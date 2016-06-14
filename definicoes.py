@@ -23,11 +23,11 @@ def criar_objeto(opcao, param):
 
    #nome, qtd_serv, list_serv, saida, entrada
    if opcao == ENTRADA or opcao == SAIDA:
-      c = Componente(param[0], param[1], param[2], param[3], param[4])
+      c = Componente(param[0], param[1], param[2], param[3])
 
    #nome, qtd_serv, list_serv, saida, entrada
    if opcao == COMPONENTE:
-      c = Componente(param[0], param[1], param[2], param[3], param[4])
+      c = Componente(param[0], param[1], param[2], param[3])
 
    #nome, ini, fim, ociosidade, ult_saida, atendimento
    if opcao == SERVIDOR:
