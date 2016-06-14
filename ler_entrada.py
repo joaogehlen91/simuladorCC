@@ -100,7 +100,10 @@ def conf_objeto(info):
    for i in info[1:]:
       if ',' in i:
          i = i.split(',')
-         print(i)
+         for j in i:
+            print("%s -> %s" % (info[0], j))
+      else:
+         print("%s -> %s" % (info[0], i))
       #outro_obj.append(i)
 
 
@@ -122,8 +125,8 @@ def configura_objetos(conf):
 
 
 
-def ler_arquivo():
-   arq  = abrir_arquivo("exemplo_4.in")   
+def ler_arquivo(arquivo):
+   arq  = abrir_arquivo(arquivo)   
    lit  = arq.readlines()
    cnf  = []
    obj  = []
@@ -147,4 +150,4 @@ def ler_arquivo():
 
    
 if __name__ == "__main__":
-   ler_arquivo()
+   ler_arquivo("exemplo_4.in")
