@@ -1,10 +1,9 @@
 import os
 import definicoes
 import ler_entrada
-from estrutura import Componente
+from estrutura import Componente, Roteador
 
 ler_entrada.ler_arquivo('exemplo_4.in')
-os.system('clear')
 
 objetos = []
 
@@ -21,8 +20,11 @@ objetos[4].next = objetos[3]
 objetos[3].next = objetos[6]
 
 for i in objetos:
-	if i.__class__ is Componente:
-		print(i.next)
+	if i.__class__ is Componente and i.next:
+		print(i.nome), (i.next.nome)
+	elif i.__class__ is Roteador:
+		print(i.dict_saidas)
+
 
 TS = 50000
 
@@ -32,7 +34,7 @@ relogio = 0
 while true:
 	relogio += 1
 
-
+	
 	
 	
 
