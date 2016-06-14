@@ -48,17 +48,21 @@ def add_objeto(nome, objeto):
 
 
 def imprime_componente(comp):
+   if comp.next != None:
+      a = comp.next.nome
+   else:
+      a = ''
+
    print("\n --------------- COMPONENTE ---------------")
    print("   | Nome     -> %s" % (comp.nome))
    print("   | Qtd_Serv -> %d" % (comp.qtd_serv))
    print("   | Lst_Serv -> %s" % ([i.nome for i in comp.list_serv]))
-   print("   | Saida    -> %s" % (comp.saida))
-   print("   | Entrada  -> %s" % (comp.entrada))
+   print("   | Saida    -> %s" % (a))
 
 def imprime_roteador(rot):
    print("\n --------------- ROTEADOR ---------------")
    print("   | Nome       -> %s" % (rot.nome))
-   print("   | Lst_Saidas -> %s" % (rot.list_saidas))
+   print("   | Lst_Saidas -> %s" % (rot.dict_saidas))
 
 def get_componente(nome):
    try:

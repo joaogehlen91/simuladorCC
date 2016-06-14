@@ -94,16 +94,19 @@ def cria_todos_objetos(conf):
 
 
 def conf_objeto(info):
-   obj_saida = get_componente(info[0])
-   outro_obj = []
+   obj_saida    = None
+   obj_original = get_componente(info[0])
+   #print(obj_original.nome)
 
    for i in info[1:]:
       if ',' in i:
          i = i.split(',')
          for j in i:
-            print("%s -> %s" % (info[0], j))
+            obj_original.next = get_componente(j)
+            #print("%s -> %s" % (info[0], j))
       else:
-         print("%s -> %s" % (info[0], i))
+         obj_original.next = get_componente(i)
+         #print("%s -> %s" % (info[0], i))
       #outro_obj.append(i)
 
 
@@ -113,9 +116,6 @@ def conf_objeto(info):
    #print(obj_saida.nome, outro_obj)
    
 
-
-
-
 def configura_objetos(conf):
    for i in conf:
       if '->' in i:
@@ -124,6 +124,14 @@ def configura_objetos(conf):
    pass
 
 
+def imprime_objetos():
+   for i in lista_objetos:
+      if 'Roteador' in str(i.__class__):
+         imprime_roteador(i)
+
+      if 'Componente' in str(i.__class__):
+         imprime_componente(i)
+         
 
 def ler_arquivo(arquivo):
    arq  = abrir_arquivo(arquivo)   
@@ -147,6 +155,7 @@ def ler_arquivo(arquivo):
 
    cria_todos_objetos(obj)
    configura_objetos(cnf)
+   imprime_objetos()
 
    
 if __name__ == "__main__":
