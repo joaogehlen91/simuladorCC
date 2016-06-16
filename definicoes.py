@@ -37,37 +37,39 @@ def criar_objeto(opcao, param):
    if opcao == ROTEADOR:
       c = Roteador(param[0], param[1])
 
-
    return c
 
 def add_objeto(nome, objeto):
    lista_objetos.append(objeto)
    indice = len(lista_objetos) - 1 if lista_objetos != [] else 0
    dict_componentes[nome] = indice
-   #print(dict_componentes)
+
+
+def imprime_objetos():
+   for i in lista_objetos:
+      if i.__class__ is Roteador:
+         imprime_roteador(i)
+
+      if i.__class__ is Componente:
+         imprime_componente(i)
+   pass
 
 
 def imprime_componente(comp):
-   if comp.next != None:
-      a = comp.next.nome
-   else:
-      a = ''
-
    print("\n --------------- COMPONENTE ---------------")
    print("   | Nome     -> %s" % (comp.nome))
    print("   | Qtd_Serv -> %d" % (comp.qtd_serv))
    print("   | Lst_Serv -> %s" % ([i.nome for i in comp.list_serv]))
-   print("   | Saida    -> %s" % (a))
+   print("   | Next     -> %s" % ('' if comp.next == None else comp.next.nome))
 
 def imprime_roteador(rot):
    print("\n --------------- ROTEADOR ---------------")
-   print("   | Nome       -> %s" % (rot.nome))
-   print("   | Lst_Saidas -> %s" % (rot.dict_saidas))
+   print("   | Nome        -> %s" % (rot.nome))
+   print("   | dict_saidas -> %s" % (rot.dict_saidas))
 
 def get_componente(nome):
    try:
       a = lista_objetos[dict_componentes[nome]]
    except:
       return None
-
    return a

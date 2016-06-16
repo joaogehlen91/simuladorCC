@@ -106,15 +106,7 @@ def conf_objeto(info):
             #print("%s -> %s" % (info[0], j))
       else:
          obj_original.next = get_componente(i)
-         #print("%s -> %s" % (info[0], i))
-      #outro_obj.append(i)
-
-
-      #print("I -> %s" % i)
-   
-
-   #print(obj_saida.nome, outro_obj)
-   
+         
 
 def configura_objetos(conf):
    for i in conf:
@@ -123,15 +115,6 @@ def configura_objetos(conf):
          conf_objeto(i)      
    pass
 
-
-def imprime_objetos():
-   for i in lista_objetos:
-      if 'Roteador' in str(i.__class__):
-         imprime_roteador(i)
-
-      if 'Componente' in str(i.__class__):
-         imprime_componente(i)
-         
 
 def ler_arquivo(arquivo):
    arq  = abrir_arquivo(arquivo)   
@@ -155,7 +138,6 @@ def ler_arquivo(arquivo):
 
    cria_todos_objetos(obj)
    configura_objetos(cnf)
-   imprime_objetos()
 
    
 if __name__ == "__main__":
