@@ -16,6 +16,7 @@ def criar_servidores(info):
       valr = i[2:-1].split('-')
       nome = i[0]
 
+      #nome, ini, fim, ociosidade, ult_saida, atendimento, list_espera_entrada
       serv = criar_objeto(SERVIDOR, [nome, int(valr[0]), int(valr[1]), 0, 0, False, []])    
       l.append(serv)
 
@@ -43,11 +44,11 @@ def componente_infinito(saida):
 ####################################################
 
 def criar_entrada_saida():
-   #nome, qtd_serv, list_serv, saida, entrada
-   objeto = criar_objeto(ENTRADA, ['E', 0, [], None, None, []])
+   #nome, qtd_serv, list_serv, next, list_espera_entrada
+   objeto = criar_objeto(ENTRADA, ['E', 0, [], None, []])
    add_objeto(objeto.nome, objeto)
 
-   objeto = criar_objeto(SAIDA, ['S', 0, [], None, None, []])
+   objeto = criar_objeto(SAIDA, ['S', 0, [], None, []])
    add_objeto(objeto.nome, objeto)
 
 
@@ -74,16 +75,16 @@ def cria_todos_objetos(conf):
       objeto = None
 
       if 'C' in i:
-         #nome, qtd_serv, list_serv, saida, entrada, COMPONENTE
+         #nome, qtd_serv, list_serv, next, list_espera_entrada
          objeto = criar_objeto(COMPONENTE, [i, criar_servidores(j)[1], criar_servidores(j)[0], None, []])
          #imprime_componente(objeto)
 
-      #nome, qtd_serv, list_serv, saida, entrada, INFINITO
+      #nome, qtd_serv, list_serv, next, list_espera_entrada
       elif 'I' in i:
          objeto = criar_objeto(COMPONENTE, [i, 0, [], None, []])
          #imprime_componente(objeto)         
 
-      #nome, list_saidas, ROTEADOR
+      #nome, dict_saidas, list_espera_entrada
       elif 'R' in i:
          objeto = criar_objeto(ROTEADOR, [i, config_roteadores(j), []])
          #imprime_roteador(objeto)
