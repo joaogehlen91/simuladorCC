@@ -1,17 +1,16 @@
 from random import randint
 
-ETs = []
 
-max = 50000
-ini = 3
-fim = 5
-ant = 0
-et = 0
+def gera_ETs(max, ini, fim, ant=0, et=0):
+	ETs = []
+	while et <= max:
+		et = randint(ini, fim)
+		et = et + ant
+		ETs.append(et)
+		ant = et
 
-while et <= max:
-	et = randint(ini, fim)
-	et = et + ant
-	ETs.append(et)
-	ant = et
+	return ETs
 
-print(ETs)
+if __name__ == "__main__":
+	ETs = gera_ETs(50000, 3, 5)
+	print ETs
