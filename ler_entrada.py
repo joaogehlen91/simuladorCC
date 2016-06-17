@@ -22,21 +22,6 @@ def criar_servidores(info):
 
    return (l, len(l))
 
-# Funcao para imprimir a lista de componentes, preciso tornar generico
-def imprimeC(lista):
-   for i in lista:
-      print("\nNome: %s, qtd serv: %d" % (i.nome, i.qtd_serv))
-      for j in i.list_serv:
-         print(" --  nome %s, Inicio %d, Fim %d" % (j.nome, j.ini, j.fim))
-
-# --------------------------------------------------
-####################################################
-#   Controle dos Componentes Infinito -            #
-####################################################
-
-def componente_infinito(saida):
-   pass
-
 
 # --------------------------------------------------
 ####################################################
@@ -77,17 +62,14 @@ def cria_todos_objetos(conf):
       if 'C' in i:
          #nome, qtd_serv, list_serv, next, list_espera_entrada
          objeto = criar_objeto(COMPONENTE, [i, criar_servidores(j)[1], criar_servidores(j)[0], None, []])
-         #imprime_componente(objeto)
 
       #nome, qtd_serv, list_serv, next, list_espera_entrada
       elif 'I' in i:
          objeto = criar_objeto(COMPONENTE, [i, 0, [], None, []])
-         #imprime_componente(objeto)         
 
       #nome, dict_saidas, list_espera_entrada
       elif 'R' in i:
          objeto = criar_objeto(ROTEADOR, [i, config_roteadores(j), []])
-         #imprime_roteador(objeto)
          
       #Inserir nas listas de objetos
       if objeto != None: add_objeto(objeto.nome, objeto)
@@ -97,21 +79,30 @@ def cria_todos_objetos(conf):
 def conf_objeto(info):
    obj_saida    = None
    obj_original = get_componente(info[0])
-   #print(obj_original.nome)
 
    for i in info[1:]:
       if ',' in i:
          i = i.split(',')
          for j in i:
             obj_original.next = get_componente(j)
-            #print("%s -> %s" % (info[0], j))
       else:
          obj_original.next = get_componente(i)
          
 
 def configura_objetos(conf):
    for i in conf:
-      if '->' in i:
+      if 'TS' in i:
+         TS = int(i.strip('\n').strip(';').split('=')[1])
+
+      #elif 'TC' in i:
+      #   print(i)
+         #porc = (i[1 : i.index('-')])
+         #print(porc)
+         #cmpo = (i[i.index('-') + 1:-1]).strip(' ')
+         #print(porc, cmpo)
+
+
+      elif '->' in i:
          i = ((i.strip('\n')).strip(';')).split('->')
          conf_objeto(i)      
    pass
@@ -130,12 +121,17 @@ def ler_arquivo(arquivo):
          break
 
       a = i.split(';')[:-1]
-      if a != []: b = a[0].split(':')
 
-      try:
-         obj.append((b[0], b[1].split(',')))
-      except:
-         pass
+      if a != []: 
+         b = a[0].split(':') 
+
+         try:
+            obj.append((b[0], b[1].split(',')))
+         except:
+            pass
+
+
+      
 
    cria_todos_objetos(obj)
    configura_objetos(cnf)
