@@ -15,7 +15,7 @@ from estrutura  import *
 global dict_componentes, lista_objetos
 global ROTEADOR, COMPONENTE, SERVIDOR, ENTRADA, SAIDA, TS, TC
 
-dict_componentes , lista_objetos, TS, TC = {}, [], 0, 0
+TS, TC, dict_componentes , lista_objetos       = 0, (1,1), {}, []
 ROTEADOR, COMPONENTE, SERVIDOR, ENTRADA, SAIDA = 0, 1, 2, 3, 4
 
 def criar_objeto(opcao, param):
@@ -48,7 +48,7 @@ def add_objeto(nome, objeto):
 def imprime_objetos():
    print("\n     --------------- TS \ TC ---------------")
    print('   | TS -> %d' % TS)
-   print('   | TS -> %s' % TC)
+   print('   | TC -> %s' % str(TC))
 
    for i in lista_objetos:
       if i.__class__ is Roteador:
@@ -79,3 +79,4 @@ def get_componente(nome):
    except:
       return None
    return a
+
