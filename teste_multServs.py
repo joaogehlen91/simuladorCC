@@ -4,7 +4,7 @@ from estrutura import *
 from definicoes import *
 from ler_entrada import *
 
-entrada = [6, 24, 26, 35]
+entrada = [6, 24, 26, 35, 40]
 ler_arquivo("exemplo_1.in")
 
 objetos = []
@@ -57,7 +57,6 @@ for x in range(0, len(servidores)):
 
 x = 0
 for i in range(0, len(espera)):
-
   if espera[i] < saida[i]:
     if inc < som:
       inc = som
