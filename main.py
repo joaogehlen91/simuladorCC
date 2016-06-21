@@ -6,7 +6,7 @@ from estrutura import Componente, Roteador
 from roteador import roteador
 from infinitos_servidores import infinitos_servidores
 
-ler_arquivo('exemplo_2.in')
+ler_arquivo('exemplo_5.in')
 
 
 entrada = get_componente('E')
