@@ -8,7 +8,7 @@ def infinitos_servidores(nomeC, et):
    aux   = serv.atividade()
    som   = aux + et
 
-   print("\nEntrada -> %s" % et)
+   print("Entrada -> %s" % et)
    print("Tempo -> %s" % aux)
    print("Saida -> %s "% som)
 
