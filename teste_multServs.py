@@ -4,7 +4,11 @@ from estrutura import *
 from definicoes import *
 from ler_entrada import *
 
-entrada = [6, 24, 26, 35, 40]
+def zerarAtendimento(servs):
+  for x in range(0, len(servs)):
+    servs[x].atendimento = False
+
+entrada = [6, 24, 26, 35, 41]
 ler_arquivo("exemplo_1.in")
 
 objetos = []
@@ -50,37 +54,39 @@ for i in entrada:
         espera.append(i)
         break
 
+zerarAtendimento(servidores)
+tam = len(servidores)
+print("\nNúmero de Servidores: %s" % tam)
 
-for x in range(0, len(servidores)):
-  servidores[x].atendimento = False
-
-
-x = 0
 for i in range(0, len(espera)):
+  if x > tam-1:
+    zerarAtendimento(servidores)
+    x = 0
+
   if espera[i] < saida[i]:
     if inc < som:
       inc = som
-    if x < len(servidores):
-      if servidores[x].atendimento == False:
-        servidores[x].atendimento = True
-        aux  = servidores[x].atividade()
-        atend.append(aux)
-        som  = saida[i] + aux
-        saida.append(som)
-        x+=1
+
+    if servidores[x].atendimento == False:
+      servidores[x].atendimento = True
+      aux  = servidores[x].atividade()
+      atend.append(aux)
+      som  = saida[i] + aux
+      saida.append(som)
+      x+=1
+    else:
+      x = 0
   else:
     inc = espera[i]
+    if servidores[x].atendimento == False:
+      servidores[x].atendimento = True
+      aux  = servidores[x].atividade()
+      atend.append(aux)
+      som  = inc + aux
+      saida.append(som) 
+      x+=1
 
-    if x < len(servidores):
-      if servidores[x].atendimento == False:
-        servidores[x].atendimento = True
-        aux  = servidores[x].atividade()
-        atend.append(aux)
-        som  = inc + aux
-        saida.append(som) 
-        x+=1
-
-print("\nEntrada -> %s" % entrada)
+print("Entrada -> %s" % entrada)
 print("Tempo -> %s" % atend)
-print("Saida -> %s "% saida)
-print("\nEspera -> %s\n" % espera)
+print("Saida -> %s \n"% saida)
+#print("\nEspera -> %s\n" % espera)
