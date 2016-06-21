@@ -1,20 +1,28 @@
-/* Componente */
-C1:1(4,8)
-C2:1(7,14), 2(10,15)
-CI:S1
+/* Criacao dos objetos */
+E;
+C1:1(1 - 4);
+C2:1(4 - 8), 2(4 - 8), 3(5 - 9);
+I1:1(4 - 8);
+S;
 
-/* Roteamento */
-R1:(3, C1), (7, S1)
+R1:(30 - C2), (30 - I1), (30 - C1);
+R2:(20 - I1), (80 - S);
 
-E1->C1
-C1->C2
-C2->R1
-R1->C1, S1
+*
+
+/* Configuracao dos objetos */
+E->C1;
+C1->R1;
+I1->C2;
+C2->R2;
 
 TS=50000
 
+TC:3,5
+
 E - Entrada
 C - Componente
+I - Infinitos servidores
 R - Roteamento
 S - Saída
 
