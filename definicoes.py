@@ -56,7 +56,23 @@ def imprime_objetos():
 
       if i.__class__ is Componente:
          imprime_componente(i)
+         for j in i.list_serv:
+            if j.__class__ is Servidor:
+               imprime_servidor(j, i.nome)
+
    pass
+
+
+def imprime_servidor(serv, nome_componente):
+   print("\n --------------- SERVIDOR - Componente %s ---------------" % nome_componente)
+   print("   | Nome        -> %s" % (serv.nome))
+   print("   | Serv Ini    -> %d" % (serv.ini))
+   print("   | Serv Fim    -> %d" % (serv.fim))
+   print("   | Atendimento -> %d" % (serv.atendimento))
+   print("   | Ult Saida   -> %d" % (serv.ult_saida))
+   print("   | Ociosidade  -> %d" % (serv.ociosidade))
+   print("   | Espera      -> %s" % (serv.list_espera_entrada))
+
 
 
 def imprime_componente(comp):
