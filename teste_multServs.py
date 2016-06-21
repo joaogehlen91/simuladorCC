@@ -32,12 +32,13 @@ espera = []
 atend = []
 
 full = False
+tam = len(servidores)
 
 for i in entrada:
 
   inc = i
 
-  if x < len(servidores):
+  if x < tam:
     if servidores[x].atendimento == False:
       servidores[x].atendimento = True
       aux  = servidores[x].atividade()
@@ -49,13 +50,12 @@ for i in entrada:
     full = True
 
   if full == True:   #Todos servidores ocupados
-    for x in range(0, len(servidores)):
+    for x in range(0, tam):
       if servidores[x].atendimento == True:
         espera.append(i)
         break
 
 zerarAtendimento(servidores)
-tam = len(servidores)
 print("\nNúmero de Servidores: %s" % tam)
 
 for i in range(0, len(espera)):
