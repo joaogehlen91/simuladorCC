@@ -11,14 +11,13 @@ ler_arquivo('exemplo_6.in')
 
 
 entrada = get_componente('E')
-#entrada.list_espera_entrada = gera_ETs(50, 3, 5)
-entrada.list_espera_entrada = [4, 8, 11, 16, 19, 23, 27, 30, 35, 40, 45, 50, 54]
+entrada.list_espera_entrada = gera_ETs(1000, 3, 5)
+#entrada.list_espera_entrada = [4, 8, 11, 16, 19, 23, 27, 30, 35, 40, 45, 50, 54]
 
 
 #verificar objetos
 print("Obejtos Criados:")
 for i in lista_objetos:
-	#print i.nome, i.list_espera_entrada, i.next
 	if i.__class__ is Componente and i.next:
 		print(i.nome, i.next.nome)
 	if i.__class__ is Roteador:
@@ -26,7 +25,7 @@ for i in lista_objetos:
 print("--------------------")
 	
 
-TS = 51
+TS = 100000
 relogio = 1
 
 def atualiza_lista_entrada(lista):
@@ -72,23 +71,28 @@ def transporta_entidade(componente, et):
 
 
 while relogio < TS:
-	print("Tempo:", relogio)
+	#print("Tempo:", relogio)
 	for componente in lista_objetos:
 		
-		print(componente.nome, componente.list_espera_entrada)
+		#print(componente.nome, componente.list_espera_entrada)
+		#if 'S' in componente.nome:
+		#	print(componente.nome, componente.list_espera_entrada)
 
 		if 'E' in componente.nome and componente.list_espera_entrada and componente.list_espera_entrada[0] == relogio:
 			entrada(componente)
-			print("Origem/Destino:", componente.nome, componente.next.nome)
+			#print("Origem/Destino:", componente.nome, componente.next.nome)
 			
 		if 'C' in componente.nome and componente.list_espera_entrada and componente.list_espera_entrada[0] == relogio:
 			executa_componente(componente)
-			print("Origem/Destino:", componente.nome, componente.next.nome)
+			#print("Origem/Destino:", componente.nome, componente.next.nome)
 			
 		if 'I' in componente.nome and componente.list_espera_entrada and componente.list_espera_entrada[0] == relogio:
 			executa_infinito(componente)
-			print("Origem/Destino:", componente.nome, componente.next.nome)
+			#print("Origem/Destino:", componente.nome, componente.next.nome)
 
 			# executar proximo componente para verificar se precisa fazer alguma coisa
 	relogio += 1
+
+print(get_componente('S').list_espera_entrada)
+print(len(get_componente('S').list_espera_entrada))
 		
