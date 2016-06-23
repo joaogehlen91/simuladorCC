@@ -12,5 +12,5 @@ def gera_ETs(max, ini, fim, ant=0, et=0):
 	return ETs
 
 if __name__ == "__main__":
-	ETs = gera_ETs(50000, 3, 5)
-	print ETs
+	ETs = gera_ETs(10000, 3, 5)
+	print(ETs)

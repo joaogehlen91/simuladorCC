@@ -20,7 +20,6 @@ def multiplos_servidores(nomeC):
        servidores[x].atendimento = True
        aux  = servidores[x].atividade()
        som  = etmp + aux
-       comp.list_espera_entrada.pop(0)
        servidores[x].ult_saida = som
        serv = x
        break
@@ -40,7 +39,6 @@ def multiplos_servidores(nomeC):
        servidores[serv].ult_saida = som
 
        servidores[serv].list_espera_entrada.append(etmp)
-       comp.list_espera_entrada.pop(0)
 
    print("Servidor -> %s "% serv)
    print("Entrada -> %s" % etmp)

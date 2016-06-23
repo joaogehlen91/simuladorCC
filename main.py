@@ -5,8 +5,9 @@ from ets import gera_ETs
 from estrutura import Componente, Roteador
 from roteador import roteador
 from infinitos_servidores import infinitos_servidores
+from multiplos_servidores import multiplos_servidores
 
-ler_arquivo('exemplo_5.in')
+ler_arquivo('exemplo_6.in')
 
 
 entrada = get_componente('E')
@@ -25,7 +26,7 @@ for i in lista_objetos:
 print("--------------------")
 	
 
-TS = 59
+TS = 51
 relogio = 1
 
 def atualiza_lista_entrada(lista):
@@ -49,7 +50,8 @@ def entrada(componente):
 
 
 def executa_componente(componente):
-	pass
+	etmp = multiplos_servidores(componente.nome)
+	transporta_entidade(componente, etmp)
 
 
 def executa_infinito(componente):
@@ -70,33 +72,22 @@ def transporta_entidade(componente, et):
 
 
 while relogio < TS:
-	print "Tempo:", relogio
+	print("Tempo:", relogio)
 	for componente in lista_objetos:
 		
 		print(componente.nome, componente.list_espera_entrada)
 
 		if 'E' in componente.nome and componente.list_espera_entrada and componente.list_espera_entrada[0] == relogio:
 			entrada(componente)
-			print "Origem/Destino:", componente.nome, componente.next.nome
-			#relogio += 1 
-			#continue
-
+			print("Origem/Destino:", componente.nome, componente.next.nome)
+			
 		if 'C' in componente.nome and componente.list_espera_entrada and componente.list_espera_entrada[0] == relogio:
 			executa_componente(componente)
-			print "Origem/Destino:", componente.nome, componente.next.nome
-			#relogio += 1 
-			#continue
-
+			print("Origem/Destino:", componente.nome, componente.next.nome)
+			
 		if 'I' in componente.nome and componente.list_espera_entrada and componente.list_espera_entrada[0] == relogio:
 			executa_infinito(componente)
-			print "Origem/Destino:", componente.nome, componente.next.nome
-			#relogio += 1 
-			#continue
-
-			
-			
-
-
+			print("Origem/Destino:", componente.nome, componente.next.nome)
 
 			# executar proximo componente para verificar se precisa fazer alguma coisa
 	relogio += 1
