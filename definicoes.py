@@ -88,10 +88,11 @@ def imprime_roteador(rot):
    print("   | Espera      -> %s" % rot.list_espera_entrada)
 
 
-def get_todos_componentes():
+#nome = 'C', 'I', 'E', etc.
+def get_todos_componentes_por_nome(nome):
    l = []
    for i in lista_objetos:
-      if 'C' in i.nome:
+      if nome in i.nome:
          l.append(i)
    return l
 

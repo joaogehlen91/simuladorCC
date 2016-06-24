@@ -8,7 +8,7 @@ from roteador import roteador
 from infinitos_servidores import infinitos_servidores
 from multiplos_servidores import multiplos_servidores
 
-ler_arquivo('exemplo_1.in')
+ler_arquivo('exemplo_6.in')
 
 
 entrada = get_componente('E')
