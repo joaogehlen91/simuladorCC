@@ -59,7 +59,6 @@ def imprime_objetos():
          for j in i.list_serv:
             if j.__class__ is Servidor:
                imprime_servidor(j, i.nome)
-
    pass
 
 
@@ -72,7 +71,6 @@ def imprime_servidor(serv, nome_componente):
    print("   | Ult Saida   -> %d" % (serv.ult_saida))
    print("   | Ociosidade  -> %d" % (serv.ociosidade))
    print("   | Espera      -> %s" % (serv.list_espera_entrada))
-
 
 
 def imprime_componente(comp):
@@ -88,6 +86,15 @@ def imprime_roteador(rot):
    print("   | Nome        -> %s" % (rot.nome))
    print("   | dict_saidas -> %s" % (rot.dict_saidas))
    print("   | Espera      -> %s" % rot.list_espera_entrada)
+
+
+def get_todos_componentes():
+   l = []
+   for i in lista_objetos:
+      if 'C' in i.nome:
+         l.append(i)
+   return l
+
 
 def get_componente(nome):
    try:
