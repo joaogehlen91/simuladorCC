@@ -1,4 +1,5 @@
 import os
+import estatistica as est
 from definicoes import lista_objetos, get_componente
 from ler_entrada import ler_arquivo
 from ets import gera_ETs
@@ -7,11 +8,11 @@ from roteador import roteador
 from infinitos_servidores import infinitos_servidores
 from multiplos_servidores import multiplos_servidores
 
-ler_arquivo('exemplo_6.in')
+ler_arquivo('exemplo_1.in')
 
 
 entrada = get_componente('E')
-entrada.list_espera_entrada = gera_ETs(1000, 3, 5)
+entrada.list_espera_entrada = gera_ETs(20, 3, 5)
 #entrada.list_espera_entrada = [4, 8, 11, 16, 19, 23, 27, 30, 35, 40, 45, 50, 54]
 
 
@@ -25,7 +26,7 @@ for i in lista_objetos:
 print("--------------------")
 	
 
-TS = 100000
+TS = 30
 relogio = 1
 
 def atualiza_lista_entrada(lista):
@@ -71,9 +72,11 @@ def transporta_entidade(componente, et):
 
 
 while relogio < TS:
-	#print("Tempo:", relogio)
+	print("\n------------------------------\nTempo:", relogio)
+
 	for componente in lista_objetos:
-		
+		est.atualiza_estatisticas(componente, relogio)   
+
 		#print(componente.nome, componente.list_espera_entrada)
 		#if 'S' in componente.nome:
 		#	print(componente.nome, componente.list_espera_entrada)
@@ -93,6 +96,5 @@ while relogio < TS:
 			# executar proximo componente para verificar se precisa fazer alguma coisa
 	relogio += 1
 
-print(get_componente('S').list_espera_entrada)
-print(len(get_componente('S').list_espera_entrada))
-		
+#print(get_componente('S').list_espera_entrada)
+#print(len(get_componente('S').list_espera_entrada))
