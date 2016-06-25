@@ -30,5 +30,6 @@ class Roteador:
     self.list_espera_entrada = list_espera_entrada
 
 class Estatistica_Componente:
-  def __init__(self, nome_componente):
-    self.nome_componente     = nome_componente
+  def __init__(self, nome_componente, total_espera_servidores):
+    self.nome_componente            = nome_componente
+    self.total_espera_servidores    = total_espera_servidores
