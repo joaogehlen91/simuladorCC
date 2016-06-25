@@ -22,11 +22,5 @@ def roteador(origem):
    if roteador.__class__ is not Roteador: return
 
    destino = calcula_porcentagem(roteador.dict_saidas)
-   print(destino.nome)
+   print("Destino Roteador: %s\n" % destino.nome)
    return destino
-
-
-
-if __name__ == '__main__':
-   le.ler_arquivo('exemplo_4.in')
-   roteador('C1')
