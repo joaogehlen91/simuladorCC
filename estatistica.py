@@ -49,7 +49,7 @@ def calcula_3():
    for comp in lst:
       soma += sum([x.ociosidade for x in comp.list_serv])
 
-   arq.write("                     Ociosidade Média Geral ---> %0.2f\n" % (0 if len(lst) <= 0 else (soma / len(lst))))
+   arq.write("                     Ociosidade Média Geral ---> %0.2f\n" % (0 if len(lst) <= 0 else float(soma / len(lst))))
    return
 
 
@@ -68,9 +68,15 @@ def calcula_4():
 
 #Tempo médio de atendimento das entidades temporárias em cada componente;
 def calcula_5():
-  lst = df.lista_objetos
+  lst = df.get_todos_componentes_por_nome('C') + df.get_todos_componentes_por_nome('I')
   arq.write("\n\n*** 5) Tempo médio de atendimento das entidades temporárias em cada componente. ***\n")
 
+  for cmp in lst:
+      arq.write("\n             ---------------- COMPONENTE %s ----------------\n" % cmp.nome)
+      soma = sum([x.estatistica_servidor.total_atendimento for x in cmp.list_serv])
+      arq.write("                     Qtd de ET que passou por aqui  ---> %d\n" % (cmp.estatistica_componente.qtd_et_passou))
+      arq.write("                     Media do tempo de atendimento  ---> %0.2f\n" % (soma / len(cmp.list_serv)))
+      print("Soma -> %f" % soma)
   pass
 
 

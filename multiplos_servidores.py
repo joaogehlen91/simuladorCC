@@ -11,9 +11,7 @@ def multiplos_servidores(nomeC):
    for i in comp.list_serv:
      servidores.append(i)
 
-   cont = 0
-   aux = 0
-   som = 0
+   cont, aux, som = 0, 0, 0
    tam = len(servidores)
    ult_saida_menor = 9999999999999
 
@@ -24,6 +22,7 @@ def multiplos_servidores(nomeC):
 
        #Estatistica - Tempo de atendimento
        serv_atualizado = comp.list_serv[x]
+       comp.estatistica_componente.qtd_et_passou += 1
        serv_atualizado.estatistica_servidor.incrementa_atendimento(aux)
 
        som  = etmp + aux
@@ -43,9 +42,13 @@ def multiplos_servidores(nomeC):
        aux = servidores[serv].atividade()
        som = ult_saida_menor + aux
        servidores[serv].ult_saida = som
+
+       #Estatistica - Tempo de atendimento
+       serv_atualizado = comp.list_serv[serv]
+       comp.estatistica_componente.qtd_et_passou += 1
+       serv_atualizado.estatistica_servidor.incrementa_atendimento(aux)
        
        #Estatisticas - Tempo de espera das ET
-       serv_atualizado = comp.list_serv[serv]
        serv_atualizado.estatistica_servidor.incrementa_espera(ult_saida_menor - etmp)
 
        print("Espera -> %d" % (ult_saida_menor - etmp))
@@ -60,36 +63,3 @@ def multiplos_servidores(nomeC):
 
 
    return som
-
-# A main ira fazer isso.
-if __name__ == '__main__':
-   le.ler_arquivo("exemplo_1.in")
-
-   relogio = 0
-   c = df.get_componente('C1')
-   c.list_espera_entrada = []
-
-   while relogio < 500:
-      if relogio == 2:
-         c.list_espera_entrada.append(2)
-         multiplos_servidores('C1')
-
-      if relogio == 5:
-         c.list_espera_entrada.append(5)
-         multiplos_servidores('C1')
-
-      if relogio == 20:
-         c.list_espera_entrada.append(20)
-         multiplos_servidores('C1')
-
-      if relogio == 35:
-         c.list_espera_entrada.append(35)
-         multiplos_servidores('C1')
-
-      if relogio == 40:
-         c.list_espera_entrada.append(40)
-         multiplos_servidores('C1')
-
-      relogio += 1
-
-# A main ira fazer isso.

@@ -34,8 +34,9 @@ class Roteador:
 
 #Classes com outras estatistícas além da ociosidade. Uteis para itens (4), (5), (6) e (7)
 class Estatistica_Componente:
-  def __init__(self, nome_componente):
-    self.nome_componente            = nome_componente
+  def __init__(self, nome_componente, qtd_et_passou = 0):
+    self.nome_componente    = nome_componente
+    self.qtd_et_passou      = qtd_et_passou
 
 class Estatistica_Servidor:
   def __init__(self, nome_servidor, total_espera = 0, total_atendimento = 0):
