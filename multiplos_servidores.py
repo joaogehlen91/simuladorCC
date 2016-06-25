@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import ler_entrada as le
 import definicoes  as df
 
@@ -39,12 +41,12 @@ def multiplos_servidores(nomeC):
        servidores[serv].ult_saida = som
 
        servidores[serv].list_espera_entrada.append(etmp)
-   
+
    print("\nServidor -> %s "% serv)
    print("Entrada -> %s" % etmp)
    print("Tempo -> %s" % aux)
    print("Saida -> %s \n"% som)
-   
+
    return som
 
 # A main ira fazer isso.

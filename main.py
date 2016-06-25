@@ -1,10 +1,12 @@
+# -*- coding: utf-8 -*-
+
 import os
-import estatistica as est
-from definicoes import lista_objetos, get_componente
-from ler_entrada import ler_arquivo
-from ets import gera_ETs
-from estrutura import Componente, Roteador
-from roteador import roteador
+import estatistica        as est
+from definicoes           import lista_objetos, get_componente
+from ler_entrada          import ler_arquivo
+from ets                  import gera_ETs
+from estrutura            import Componente, Roteador
+from roteador             import roteador
 from infinitos_servidores import infinitos_servidores
 from multiplos_servidores import multiplos_servidores
 
@@ -24,7 +26,7 @@ for i in lista_objetos:
 	if i.__class__ is Roteador:
 		print(i.nome, i.dict_saidas)
 print("--------------------")
-	
+
 
 TS = 20
 relogio = 1
@@ -43,7 +45,7 @@ def entrada(componente):
 
 	if destino.__class__ is Roteador:
 		destino = roteador(origem.nome)
-	
+
 	destino.list_espera_entrada.append(et)
 	atualiza_lista_entrada(destino.list_espera_entrada)
 	origem.list_espera_entrada.pop(0)
@@ -57,14 +59,14 @@ def executa_componente(componente):
 def executa_infinito(componente):
 	etmp = infinitos_servidores(componente.nome)
 	transporta_entidade(componente, etmp)
-	
+
 
 def transporta_entidade(componente, et):
 	origem = componente
 	destino = componente.next
 	if destino.__class__ is Roteador:
 		destino = roteador(origem.nome)
-	
+
 	destino.list_espera_entrada.append(et)
 	atualiza_lista_entrada(destino.list_espera_entrada)
 	origem.list_espera_entrada.pop(0)
@@ -84,11 +86,11 @@ while relogio < TS:
 		if 'E' in componente.nome and componente.list_espera_entrada and componente.list_espera_entrada[0] == relogio:
 			entrada(componente)
 			print("Origem/Destino:", componente.nome, componente.next.nome)
-			
+
 		if 'C' in componente.nome and componente.list_espera_entrada and componente.list_espera_entrada[0] == relogio:
 			executa_componente(componente)
 			print("Origem/Destino:", componente.nome, componente.next.nome)
-			
+
 		if 'I' in componente.nome and componente.list_espera_entrada and componente.list_espera_entrada[0] == relogio:
 			executa_infinito(componente)
 			print("Origem/Destino:", componente.nome, componente.next.nome)

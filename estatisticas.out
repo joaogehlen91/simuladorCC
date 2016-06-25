@@ -1,22 +1,22 @@
 *** 1) Ociosidade das entidades permanentes, individualmente por servidor ***
 
              ---------------- COMPONENTE C1 ----------------
-                     Ociosidade Servidor 1 ---> 3.00
+                     Ociosidade Servidor 1 ---> 2.00
 
              ---------------- COMPONENTE C2 ----------------
-                     Ociosidade Servidor 1 ---> 15.00
-                     Ociosidade Servidor 2 ---> 19.00
+                     Ociosidade Servidor 1 ---> 12.00
+                     Ociosidade Servidor 2 ---> 18.00
                      Ociosidade Servidor 3 ---> 19.00
 
 
 *** 2) Ociosidade média por componente. ***
 
              ---------------- COMPONENTE C1 ----------------
-                     Ociosidade Média  ---> 3.00
+                     Ociosidade Média  ---> 2.00
 
              ---------------- COMPONENTE C2 ----------------
-                     Ociosidade Média  ---> 17.67
+                     Ociosidade Média  ---> 16.00
 
 
 *** 3) Ociosidade média geral de todos os componentes com servidores. ***
-                     Ociosidade Média Geral ---> 28.00
+                     Ociosidade Média Geral ---> 25.00

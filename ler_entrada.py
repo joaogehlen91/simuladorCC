@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import definicoes as df
 
 def abrir_arquivo(nome_arq):

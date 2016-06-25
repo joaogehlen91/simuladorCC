@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 # --------------------------------------------------
 # Arquivo com definicoes globais e funcoes uteis
 
@@ -103,4 +105,3 @@ def get_componente(nome):
    except:
       return None
    return a
-

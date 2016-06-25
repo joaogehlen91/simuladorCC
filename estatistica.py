@@ -1,9 +1,11 @@
+# -*- coding: utf-8 -*-
+
 from os            import system
 import ler_entrada as le
 import definicoes  as df
 
 '''
-   (1) x Ociosidade das entidades permanentes, individualmente por servidor (exceto para centros de serviço com infinitos servidores). 
+   (1) x Ociosidade das entidades permanentes, individualmente por servidor (exceto para centros de serviço com infinitos servidores).
    (2) x Ociosidade média por componente.
    (3) x Ociosidade média geral de todos os componentes com servidores.
    (4) Tempo médio de espera das ETs na fila de cada componente;
@@ -44,13 +46,15 @@ def calcula_3():
    arq.write("\n\n*** 3) Ociosidade média geral de todos os componentes com servidores. ***\n")
    soma = 0
 
-   for comp in lst:      
+   for comp in lst:
       soma += sum([x.ociosidade for x in comp.list_serv])
 
    arq.write("                     Ociosidade Média Geral ---> %0.2f\n" % (0 if len(lst) <= 0 else (soma / len(lst))))
-   pass
+   return
 
 
+def calcula_4():
+    return
 
 def gera_resultados():
    system("clear")
@@ -63,7 +67,7 @@ def gera_resultados():
 
 def atualiza_servidores(list_serv, relogio):
    for serv in list_serv:
-      if (relogio - serv.ult_saida) > 0: 
+      if (relogio - serv.ult_saida) > 0:
          serv.ociosidade += 1
 
       print("Ult_Saida / Ociosidade    -> %d / %d" % (serv.ult_saida, serv.ociosidade))
@@ -72,4 +76,3 @@ def atualiza_estatisticas(componente, relogio):
    if 'C' in componente.nome:
       print("Componente -> %s" % componente.nome)
       atualiza_servidores(componente.list_serv, relogio)
-      
