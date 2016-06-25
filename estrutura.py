@@ -23,9 +23,12 @@ class Servidor:
   def atividade(self):
     return randint(self.ini, self.fim)
 
-
 class Roteador:
   def __init__(self, nome, dict_saidas, list_espera_entrada):
     self.nome                = nome
     self.dict_saidas         = dict_saidas
     self.list_espera_entrada = list_espera_entrada
+
+class Estatistica_Componente:
+  def __init__(self, nome_componente):
+    self.nome_componente     = nome_componente

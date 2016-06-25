@@ -53,6 +53,7 @@ def calcula_3():
    return
 
 
+#Tempo médio de espera das ETs na fila de cada componente;
 def calcula_4():
     return
 
