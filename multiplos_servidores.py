@@ -43,16 +43,30 @@ def multiplos_servidores(nomeC):
        som = ult_saida_menor + aux
        servidores[serv].ult_saida = som
 
-       #Estatistica - Tempo de atendimento
        serv_atualizado = comp.list_serv[serv]
-       comp.estatistica_componente.qtd_et_passou += 1
+
+       #Estatistica - Tempo de atendimento do servidor
        serv_atualizado.estatistica_servidor.incrementa_atendimento(aux)
        
-       #Estatisticas - Tempo de espera das ET
-       serv_atualizado.estatistica_servidor.incrementa_espera(ult_saida_menor - etmp)
+       if ult_saida_menor - etmp > 0:
+         #Estatisticas - Tempo de espera das ET do servidor
+         serv_atualizado.estatistica_servidor.incrementa_espera(ult_saida_menor - etmp)
 
-       print("Espera -> %d" % (ult_saida_menor - etmp))
+       #Estatisticas - Total de ETs na fila do servidor
+       serv_atualizado.estatistica_servidor.total_ocorreu_fila += 1
+
+       #Estatistica - Qtd de ETs no componente
+       comp.estatistica_componente.qtd_et_passou += 1
+
+       #print("Fila1  -> %s" % servidores[serv].list_espera_entrada)
+       #print("Espera -> %d" % (ult_saida_menor - etmp))
+
+       #Estatistica - Total de vezes que ocorreu fila
        servidores[serv].list_espera_entrada.append(etmp)
+
+       #Estatistica - Total de ET nas vezes que ocorreram fila
+       servidores[serv].estatistica_servidor.incrementa_tamanho_fila(len(servidores[serv].list_espera_entrada))
+       #print("Fila2   -> %s, %d" % (servidores[serv].list_espera_entrada, len(servidores[serv].list_espera_entrada)))       
 
 
    print("\nComponente -> %s" % nomeC)
@@ -60,6 +74,5 @@ def multiplos_servidores(nomeC):
    print("Entrada -> %s" % etmp)
    print("Tempo -> %s" % aux)
    print("Saida -> %s \n"% som)
-
 
    return som

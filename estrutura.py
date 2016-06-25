@@ -39,13 +39,18 @@ class Estatistica_Componente:
     self.qtd_et_passou      = qtd_et_passou
 
 class Estatistica_Servidor:
-  def __init__(self, nome_servidor, total_espera = 0, total_atendimento = 0):
+  def __init__(self, nome_servidor, total_espera = 0, total_atendimento = 0, total_ocorreu_fila = 0, total_tamanho_fila = 0):
     self.nome_servidor      = nome_servidor
     self.total_espera       = total_espera
     self.total_atendimento  = total_atendimento
+    self.total_ocorreu_fila = total_ocorreu_fila
+    self.total_tamanho_fila = total_tamanho_fila
 
   def incrementa_espera(self, espera):
     self.total_espera += espera
 
   def incrementa_atendimento(self, atendimento):
     self.total_atendimento += atendimento
+
+  def incrementa_tamanho_fila(self, tamanho):
+    self.total_tamanho_fila += tamanho
