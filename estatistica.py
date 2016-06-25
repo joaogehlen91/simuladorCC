@@ -55,6 +55,15 @@ def calcula_3():
 
 #Tempo médio de espera das ETs na fila de cada componente;
 def calcula_4():
+    lst = df.get_todos_componentes_por_nome('C')
+
+    arq.write("\n\n*** 4) Tempo médio de espera das ETs na fila de cada componente. ***\n")
+
+    for cmp in lst:
+       arq.write("\n             ---------------- COMPONENTE %s ----------------\n" % cmp.nome)
+       soma = sum([x.estatistica_servidor.total_espera for x in cmp.list_serv])
+       arq.write("                     Media do tempo de espera  ---> %0.2f\n" % ( soma / len(cmp.list_serv)))
+
     return
 
 def gera_resultados():
@@ -62,6 +71,7 @@ def gera_resultados():
    calcula_1()
    calcula_2()
    calcula_3()
+   calcula_4()
 
    arq.close()
    pass

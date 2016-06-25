@@ -23,17 +23,23 @@ ROTEADOR, COMPONENTE, SERVIDOR, ENTRADA, SAIDA = 0, 1, 2, 3, 4
 def criar_objeto(opcao, param):
    c = None
 
-   #nome, qtd_serv, list_serv, next, list_espera_entrada
+   #nome, qtd_serv, list_serv, next, list_espera_entrada, estat_componente
    if opcao == ENTRADA or opcao == SAIDA:
-      c = Componente(param[0], param[1], param[2], param[3], param[4])
+      c = Componente(param[0], param[1], param[2], param[3], param[4], None)
+      #nome_componente
+      c.estatistica_componente = Estatistica_Componente(c.nome)
 
-   #nome, qtd_serv, list_serv, next, list_espera_entrada
+   #nome, qtd_serv, list_serv, next, list_espera_entrada, estat_componente
    if opcao == COMPONENTE:
-      c = Componente(param[0], param[1], param[2], param[3], param[4])
+      c = Componente(param[0], param[1], param[2], param[3], param[4], None)
+      #nome_componente
+      c.estatistica_componente = Estatistica_Componente(c.nome)
 
-   #nome, ini, fim, ociosidade, ult_saida, atendimento, list_espera_entrada
+   #nome, ini, fim, ociosidade, ult_saida, atendimento, list_espera_entrada, estat_servidor
    if opcao == SERVIDOR:
-      c = Servidor(param[0], param[1], param[2], param[3], param[4], param[5], param[6])
+      c = Servidor(param[0], param[1], param[2], param[3], param[4], param[5], param[6], None)
+      #nome_servidor
+      c.estatistica_servidor = Estatistica_Servidor(c.nome)
 
    #nome, dict_saidas, list_espera_entrada
    if opcao == ROTEADOR:

@@ -78,7 +78,6 @@ while relogio < TS:
 	print("\n------------------------------\nTempo:", relogio)
 
 	for componente in lista_objetos:
-
 		print(componente.nome, componente.list_espera_entrada)
 		#if 'S' in componente.nome:
 		#	print(componente.nome, componente.list_espera_entrada)
