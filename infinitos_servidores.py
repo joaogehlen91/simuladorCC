@@ -9,18 +9,11 @@ def infinitos_servidores(nomeC):
    aux   = serv.atividade()
    som   = aux + etmp
 
-   print("Entrada -> %s" % etmp)
+   #Estatisticas - Tempo de atendimento e Qtd de ETS que passaram pelo componente
+   serv.estatistica_servidor.incrementa_atendimento(aux)
+   comp.estatistica_componente.qtd_et_passou += 1
+
+   print("\n(INFINITO)\nEntrada -> %s" % etmp)
    print("Tempo -> %s" % aux)
    print("Saida -> %s "% som)
    return som
-
-
-# A main ira fazer isso.
-if __name__ == '__main__':
-   le.ler_arquivo("exemplo_4.in")
-
-   c = df.get_componente('I1')
-   c.list_espera_entrada = [2]
-
-   infinitos_servidores('I1')
-# A main ira fazer isso.

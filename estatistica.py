@@ -9,8 +9,8 @@ import definicoes  as df
    (2) x Ociosidade média por componente.
    (3) x Ociosidade média geral de todos os componentes com servidores.
    (4) x Tempo médio de espera das ETs na fila de cada componente;
-   (5) Tempo médio de atendimento das entidades temporárias em cada componente;
-   (6) Tempo médio de permanência, no modelo, das Ets.
+   (5) x Tempo médio de atendimento das entidades temporárias em cada componente;
+   (6) x Tempo médio de permanência, no modelo, das Ets.
    (7) Número médio de ETs na fila de cada componente que possui contenção.
 '''
 
@@ -74,29 +74,43 @@ def calcula_5():
   for cmp in lst:
       arq.write("\n             ---------------- COMPONENTE %s ----------------\n" % cmp.nome)
       soma = sum([x.estatistica_servidor.total_atendimento for x in cmp.list_serv])
-      arq.write("                     Qtd de ET que passou por aqui  ---> %d\n" % (cmp.estatistica_componente.qtd_et_passou))
-      arq.write("                     Media do tempo de atendimento  ---> %0.2f\n" % (soma / len(cmp.list_serv)))
-      print("Soma -> %f" % soma)
-  pass
+      arq.write("                   Qtd de ET que passou pelo componente ---> %d\n" % (cmp.estatistica_componente.qtd_et_passou))
+      arq.write("                   Media do tempo de atendimento        ---> %0.2f\n" % (soma / cmp.estatistica_componente.qtd_et_passou))
+  return
 
 
-def gera_resultados():
+#Tempo médio de permanência, no modelo, das Ets.
+def calcula_6(entrada):
+  s = df.get_componente('S')
+  arq.write("\n\n*** 6) Tempo médio de permanência, no modelo, das Ets.. ***\n")
+  print("Entrada -> %s" % entrada)
+  print("Saida   -> %s" % s.list_espera_entrada)
+  print("Media Total      %d" % (s.list_espera_entrada[-1:][0] - entrada[0]))
+
+  arq.write("                   Media de permanência        ---> %0.2f\n" % (s.list_espera_entrada[-1:][0] - entrada[0]))
+
+  return
+
+
+def gera_resultados(entradaC):
    #system("clear")
    calcula_1()
    calcula_2()
    calcula_3()
    calcula_4()
    calcula_5()
+   calcula_6(entradaC)
 
    arq.close()
    return
 
 def atualiza_servidores(list_serv, relogio):
-   for serv in list_serv:
-      if (relogio - serv.ult_saida) > 0:
-         serv.ociosidade += 1
+  for serv in list_serv:
+    if (relogio - serv.ult_saida) > 0:
+      serv.ociosidade += 1
 
       print("Ult_Saida / Ociosidade    -> %d / %d" % (serv.ult_saida, serv.ociosidade))
+  print("\n")
 
 def atualiza_estatisticas(componente, relogio):
    if 'C' in componente.nome:
