@@ -13,7 +13,7 @@ def infinitos_servidores(nomeC):
    serv.estatistica_servidor.incrementa_atendimento(aux)
    comp.estatistica_componente.qtd_et_passou += 1
 
-   print("\n(INFINITO)\nEntrada -> %s" % etmp)
+   print("\n(INFINITOS SERVIDORES)\nEntrada -> %s" % etmp)
    print("Tempo -> %s" % aux)
    print("Saida -> %s "% som)
    return som
