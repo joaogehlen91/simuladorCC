@@ -8,7 +8,7 @@ import definicoes  as df
    (1) x Ociosidade das entidades permanentes, individualmente por servidor (exceto para centros de serviço com infinitos servidores).
    (2) x Ociosidade média por componente.
    (3) x Ociosidade média geral de todos os componentes com servidores.
-   (4) Tempo médio de espera das ETs na fila de cada componente;
+   (4) x Tempo médio de espera das ETs na fila de cada componente;
    (5) Tempo médio de atendimento das entidades temporárias em cada componente;
    (6) Tempo médio de permanência, no modelo, das Ets.
    (7) Número médio de ETs na fila de cada componente que possui contenção.
@@ -63,18 +63,27 @@ def calcula_4():
        arq.write("\n             ---------------- COMPONENTE %s ----------------\n" % cmp.nome)
        soma = sum([x.estatistica_servidor.total_espera for x in cmp.list_serv])
        arq.write("                     Media do tempo de espera  ---> %0.2f\n" % ( soma / len(cmp.list_serv)))
-
     return
 
+
+#Tempo médio de atendimento das entidades temporárias em cada componente;
+def calcula_5():
+  lst = df.lista_objetos
+  arq.write("\n\n*** 5) Tempo médio de atendimento das entidades temporárias em cada componente. ***\n")
+
+  pass
+
+
 def gera_resultados():
-   system("clear")
+   #system("clear")
    calcula_1()
    calcula_2()
    calcula_3()
    calcula_4()
+   calcula_5()
 
    arq.close()
-   pass
+   return
 
 def atualiza_servidores(list_serv, relogio):
    for serv in list_serv:

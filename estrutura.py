@@ -38,6 +38,13 @@ class Estatistica_Componente:
     self.nome_componente            = nome_componente
 
 class Estatistica_Servidor:
-  def __init__(self, nome_servidor, total_espera = 0):
-    self.nome_servidor = nome_servidor
-    self.total_espera  = total_espera
+  def __init__(self, nome_servidor, total_espera = 0, total_atendimento = 0):
+    self.nome_servidor      = nome_servidor
+    self.total_espera       = total_espera
+    self.total_atendimento  = total_atendimento
+
+  def incrementa_espera(self, espera):
+    self.total_espera += espera
+
+  def incrementa_atendimento(self, atendimento):
+    self.total_atendimento += atendimento

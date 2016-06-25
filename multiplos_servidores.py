@@ -21,6 +21,11 @@ def multiplos_servidores(nomeC):
      if servidores[x].ult_saida < etmp or servidores[x].atendimento == False: # Nao esta em atendimento (Algum servidor Livre Servidor)
        servidores[x].atendimento = True
        aux  = servidores[x].atividade()
+
+       #Estatistica - Tempo de atendimento
+       serv_atualizado = comp.list_serv[x]
+       serv_atualizado.estatistica_servidor.incrementa_atendimento(aux)
+
        som  = etmp + aux
        servidores[x].ult_saida = som
        serv = x
@@ -29,7 +34,6 @@ def multiplos_servidores(nomeC):
        cont+=1
 
    if cont == tam: # Servidores ocupados
-
      for x in range(0, tam): # Procurar o menor tempo de saida
        if servidores[x].ult_saida < ult_saida_menor:
          ult_saida_menor = servidores[x].ult_saida
@@ -39,13 +43,21 @@ def multiplos_servidores(nomeC):
        aux = servidores[serv].atividade()
        som = ult_saida_menor + aux
        servidores[serv].ult_saida = som
+       
+       #Estatisticas - Tempo de espera das ET
+       serv_atualizado = comp.list_serv[serv]
+       serv_atualizado.estatistica_servidor.incrementa_espera(ult_saida_menor - etmp)
 
+       print("Espera -> %d" % (ult_saida_menor - etmp))
        servidores[serv].list_espera_entrada.append(etmp)
 
-   print("\nServidor -> %s "% serv)
+
+   print("\nComponente -> %s" % nomeC)
+   print("Servidor -> %s "% serv)
    print("Entrada -> %s" % etmp)
    print("Tempo -> %s" % aux)
    print("Saida -> %s \n"% som)
+
 
    return som
 
