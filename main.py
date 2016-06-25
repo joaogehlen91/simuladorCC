@@ -3,6 +3,7 @@
 import os
 import estatistica        as est
 import definicoes 	 	  as df
+from sys				  import argv
 from ler_entrada          import ler_arquivo
 from ets                  import gera_ETs
 from estrutura            import Componente, Roteador
@@ -10,7 +11,8 @@ from roteador             import roteador
 from infinitos_servidores import infinitos_servidores
 from multiplos_servidores import multiplos_servidores
 
-ler_arquivo('exemplo_4.in')
+#Argumento da linha de comando
+ler_arquivo(argv[1])
 
 entrada = df.get_componente('E')
 entrada.list_espera_entrada = gera_ETs(10, 3, 5)
@@ -29,7 +31,6 @@ for i in df.lista_objetos:
 		print(i.nome, i.dict_saidas)
 print("--------------------")
 
-print(df.TS)
 #df.TS = 21
 relogio = 1
 
