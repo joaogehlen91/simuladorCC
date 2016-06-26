@@ -1,6 +1,4 @@
 # -*- coding: utf-8 -*-
-
-import os
 import estatistica        as est
 import definicoes 	 	  as df
 from sys				  import argv
@@ -11,28 +9,6 @@ from roteador             import roteador
 from infinitos_servidores import infinitos_servidores
 from multiplos_servidores import multiplos_servidores
 
-#Argumento da linha de comando
-ler_arquivo(argv[1])
-
-entrada = df.get_componente('E')
-entrada.list_espera_entrada = gera_ETs(10, 3, 5)
-
-entradaC = [x for x in entrada.list_espera_entrada]
-
-#entrada.list_espera_entrada = [4, 8, 11, 16, 19, 23, 27, 30, 35, 40, 45, 50, 54]
-
-
-#verificar objetos
-print("Obejtos Criados:")
-for i in df.lista_objetos:
-	if i.__class__ is Componente and i.next:
-		print(i.nome, i.next.nome)
-	if i.__class__ is Roteador:
-		print(i.nome, i.dict_saidas)
-print("--------------------")
-
-#df.TS = 21
-relogio = 1
 
 def atualiza_lista_entrada(lista):
 	lista.sort()
@@ -41,7 +17,7 @@ def atualiza_lista_entrada(lista):
 			lista[i] = (lista[i] + 1)
 
 
-def entrada(componente):
+def executa_entrada(componente):
 	origem = componente
 	destino = componente.next
 	et = origem.list_espera_entrada[0]
@@ -75,8 +51,32 @@ def transporta_entidade(componente, et):
 	origem.list_espera_entrada.pop(0)
 
 
+#Argumento da linha de comando
+ler_arquivo(argv[1])
+
+entrada = df.get_componente('E')
+
+#entrada.list_espera_entrada = gera_ETs(10, 3, 5)
+entrada.list_espera_entrada = gera_ETs(df.TS, df.TC[0], df.TC[1])
+#entrada.list_espera_entrada = [4, 8, 11, 16, 19, 23, 27, 30, 35, 40, 45, 50, 54]
+entradaC = [x for x in entrada.list_espera_entrada]
+
+
+
+
+#verificar objetos
+print("Obejtos Criados:")
+for i in df.lista_objetos:
+	if i.__class__ is Componente and i.next:
+		print(i.nome, i.next.nome)
+	if i.__class__ is Roteador:
+		print(i.nome, i.dict_saidas)
+print("--------------------")
+
+
 print(df.get_componente('E').list_espera_entrada)
 
+relogio = 1
 while relogio <= df.TS:
 	print("\n------------------------------\nTempo:", relogio)
 
@@ -86,7 +86,7 @@ while relogio <= df.TS:
 		#	print(componente.nome, componente.list_espera_entrada)
 
 		if 'E' in componente.nome and componente.list_espera_entrada and componente.list_espera_entrada[0] == relogio:
-			entrada(componente)
+			executa_entrada(componente)
 			#print("Origem/Destino:", componente.nome, componente.next.nome)
 
 		if 'C' in componente.nome and componente.list_espera_entrada and componente.list_espera_entrada[0] == relogio:
