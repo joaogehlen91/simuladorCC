@@ -58,15 +58,11 @@ def multiplos_servidores(nomeC):
        #Estatistica - Qtd de ETs no componente
        comp.estatistica_componente.qtd_et_passou += 1
 
-       #print("Fila1  -> %s" % servidores[serv].list_espera_entrada)
-       #print("Espera -> %d" % (ult_saida_menor - etmp))
-
        #Estatistica - Total de vezes que ocorreu fila
        servidores[serv].list_espera_entrada.append(etmp)
 
        #Estatistica - Total de ET nas vezes que ocorreram fila
        servidores[serv].estatistica_servidor.incrementa_tamanho_fila(len(servidores[serv].list_espera_entrada))
-       #print("Fila2   -> %s, %d" % (servidores[serv].list_espera_entrada, len(servidores[serv].list_espera_entrada)))       
 
 
    print("\nComponente -> %s" % nomeC)

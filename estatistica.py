@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-from os            import system
 import ler_entrada as le
 import definicoes  as df
 
@@ -117,7 +116,6 @@ def calcula_7():
 
 
 def gera_resultados(entradaC):
-   #system("clear")
    calcula_1()
    calcula_2()
    calcula_3()
