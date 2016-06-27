@@ -1,0 +1,61 @@
+*** 1) Ociosidade das entidades permanentes, individualmente por servidor ***
+
+             ---------------- COMPONENTE C1 ----------------
+                     Ociosidade Servidor 1 ---> 2.00
+
+             ---------------- COMPONENTE C2 ----------------
+                     Ociosidade Servidor 1 ---> 11852.00
+                     Ociosidade Servidor 2 ---> 27112.00
+                     Ociosidade Servidor 3 ---> 48419.00
+
+
+*** 2) Ociosidade média por componente. ***
+
+             ---------------- COMPONENTE C1 ----------------
+                     Ociosidade Média  ---> 2.00
+
+             ---------------- COMPONENTE C2 ----------------
+                     Ociosidade Média  ---> 29127.67
+
+
+*** 3) Ociosidade média geral de todos os componentes com servidores. ***
+                     Ociosidade Média Geral ---> 43692.50
+
+
+*** 4) Tempo médio de espera das ETs na fila de cada componente. ***
+
+             ---------------- COMPONENTE C1 ----------------
+                     Media do tempo de espera  ---> 2349012285.00
+
+             ---------------- COMPONENTE C2 ----------------
+                     Media do tempo de espera  ---> 0.67
+
+
+*** 5) Tempo médio de atendimento das entidades temporárias em cada componente. ***
+
+             ---------------- COMPONENTE C1 ----------------
+                   Qtd de ET que passou pelo componente ---> 12809
+                   Media do tempo de atendimento        ---> 32.53
+
+             ---------------- COMPONENTE C2 ----------------
+                   Qtd de ET que passou pelo componente ---> 1563
+                   Media do tempo de atendimento        ---> 39.07
+
+             ---------------- COMPONENTE I1 ----------------
+                   Qtd de ET que passou pelo componente ---> 1108
+                   Media do tempo de atendimento        ---> 5.96
+
+
+*** 6) Tempo médio de permanência, no modelo, das Ets.. ***
+                   Media de permanência        ---> 50003.00
+
+
+*** 7) Número médio de ETs na fila de cada componente que possui contenção.. ***
+
+             ---------------- COMPONENTE C1 ----------------
+                   Total de vezes que ocorreu fila        ---> 12808.00
+                   Média de ETs nas filas                 ---> 6404.50
+
+             ---------------- COMPONENTE C2 ----------------
+                   Total de vezes que ocorreu fila        ---> 1.00
+                   Média de ETs nas filas                 ---> 1.00

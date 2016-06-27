@@ -1,0 +1,55 @@
+*** 1) Ociosidade das entidades permanentes, individualmente por servidor ***
+
+             ---------------- COMPONENTE C1 ----------------
+                     Ociosidade Servidor 1 ---> 2.00
+
+             ---------------- COMPONENTE C2 ----------------
+                     Ociosidade Servidor 1 ---> 7.00
+
+
+*** 2) Ociosidade média por componente. ***
+
+             ---------------- COMPONENTE C1 ----------------
+                     Ociosidade Média  ---> 2.00
+
+             ---------------- COMPONENTE C2 ----------------
+                     Ociosidade Média  ---> 7.00
+
+
+*** 3) Ociosidade média geral de todos os componentes com servidores. ***
+                     Ociosidade Média Geral ---> 4.50
+
+
+*** 4) Tempo médio de espera das ETs na fila de cada componente. ***
+
+             ---------------- COMPONENTE C1 ----------------
+                     Media do tempo de espera  ---> 79397759.00
+
+             ---------------- COMPONENTE C2 ----------------
+                     Media do tempo de espera  ---> 1844193280.00
+
+
+*** 5) Tempo médio de atendimento das entidades temporárias em cada componente. ***
+
+             ---------------- COMPONENTE C1 ----------------
+                   Qtd de ET que passou pelo componente ---> 12486
+                   Media do tempo de atendimento        ---> 5.01
+
+             ---------------- COMPONENTE C2 ----------------
+                   Qtd de ET que passou pelo componente ---> 9970
+                   Media do tempo de atendimento        ---> 41.86
+
+
+*** 6) Tempo médio de permanência, no modelo, das Ets.. ***
+                   Media de permanência        ---> 417352.00
+
+
+*** 7) Número médio de ETs na fila de cada componente que possui contenção.. ***
+
+             ---------------- COMPONENTE C1 ----------------
+                   Total de vezes que ocorreu fila        ---> 12485.00
+                   Média de ETs nas filas                 ---> 6243.00
+
+             ---------------- COMPONENTE C2 ----------------
+                   Total de vezes que ocorreu fila        ---> 9969.00
+                   Média de ETs nas filas                 ---> 4985.00

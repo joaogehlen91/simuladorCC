@@ -1,0 +1,39 @@
+*** 1) Ociosidade das entidades permanentes, individualmente por servidor ***
+
+             ---------------- COMPONENTE C1 ----------------
+                     Ociosidade Servidor 1 ---> 12556.00
+                     Ociosidade Servidor 2 ---> 37520.00
+
+
+*** 2) Ociosidade média por componente. ***
+
+             ---------------- COMPONENTE C1 ----------------
+                     Ociosidade Média  ---> 25038.00
+
+
+*** 3) Ociosidade média geral de todos os componentes com servidores. ***
+                     Ociosidade Média Geral ---> 50076.00
+
+
+*** 4) Tempo médio de espera das ETs na fila de cada componente. ***
+
+             ---------------- COMPONENTE C1 ----------------
+                     Media do tempo de espera  ---> 0.00
+
+
+*** 5) Tempo médio de atendimento das entidades temporárias em cada componente. ***
+
+             ---------------- COMPONENTE C1 ----------------
+                   Qtd de ET que passou pelo componente ---> 12481
+                   Media do tempo de atendimento        ---> 3.00
+
+
+*** 6) Tempo médio de permanência, no modelo, das Ets.. ***
+                   Media de permanência        ---> 49999.00
+
+
+*** 7) Número médio de ETs na fila de cada componente que possui contenção.. ***
+
+             ---------------- COMPONENTE C1 ----------------
+                   Total de vezes que ocorreu fila        ---> 0.00
+                   Média de ETs nas filas                 ---> 0.00
