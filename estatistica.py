@@ -112,7 +112,6 @@ def calcula_7():
         media_das_somas = float(soma_total_fila / soma_ocorrencia)
 
       arq.write("                   Total de vezes que ocorreu fila        ---> %0.2f\n" % soma_ocorrencia)
-      arq.write("                   Qtd total de ETs nas filas             ---> %0.2f\n" % soma_total_fila)
       arq.write("                   Média de ETs nas filas                 ---> %0.2f\n" % media_das_somas)
   return
 
